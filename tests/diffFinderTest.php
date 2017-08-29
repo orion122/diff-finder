@@ -1,19 +1,16 @@
 <?php
 namespace Diff\Tests;
 
-class DiffFinderTest extends \PHPUnit_Framework_TestCase
+use \PHPUnit\Framework\TestCase;
+
+class DiffFinderTest extends TestCase
 {
     public function testFindDiff()
     {
-        $diffResult = '{
-    "host": "hexlet.io"
-  - "timeout": "50"
-  + "timeout": "20"
-  - "proxy": "123.234.53.22"
-  + "verbose": true
-}';
         $array1 = ['host' => 'hexlet.io', 'timeout' => 50, 'proxy' => '123.234.53.22'];
         $array2 = ['timeout' => 20, 'verbose' => true, 'host' => 'hexlet.io'];
+
+        $diffResult = file_get_contents('tests/fixtures/diff-result');
 
         $this->assertEquals("$diffResult", \DiffFinder\diff\findDiff($array1, $array2, 'pretty'));
     }
@@ -52,33 +49,9 @@ class DiffFinderTest extends \PHPUnit_Framework_TestCase
                 "fee" => "100500"
             ]];
 
-        $diffResult = '{
-    "common": {
-        "setting1": "Value 1"
-      - "setting2": "200"
-        "setting3": true
-      - "setting6": {
-            "key": "value"
-        }
-      + "setting4": "blah blah"
-      + "setting5": {
-            "key5": "value5"
-        }
-    }
-    "group1": {
-      - "baz": "bas"
-      + "baz": "bars"
-        "foo": "bar"
-    }
-  - "group2": {
-        "abc": "12345"
-    }
-  + "group3": {
-        "fee": "100500"
-    }
-}';
+        $diffResultNested = file_get_contents('tests/fixtures/diff-result-nested');
 
-        $this->assertEquals("$diffResult", \DiffFinder\diff\findDiff($array1, $array2, 'pretty'));
+        $this->assertEquals("$diffResultNested", \DiffFinder\diff\findDiff($array1, $array2, 'pretty'));
     }
 
 
