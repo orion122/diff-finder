@@ -4,6 +4,7 @@
   "description": "Utility for finding differences in configuration files",
   "type": "project",
   "require": {
+    "php": ">=7.0",
     "docopt/docopt": "^1.0",
     "funct/funct": "*",
     "symfony/yaml": "*"
