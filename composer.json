@@ -4,31 +4,34 @@
   "description": "Utility for finding differences in configuration files",
   "type": "project",
   "require": {
-      "docopt/docopt": "^1.0",
-      "funct/funct": "*",
-      "symfony/yaml": "*"
+    "docopt/docopt": "^1.0",
+    "funct/funct": "*",
+    "symfony/yaml": "*"
   },
   "require-dev": {
-      "phpunit/phpunit": "*",
-      "squizlabs/php_codesniffer": "^3.0"
+    "phpunit/phpunit": "*",
+    "squizlabs/php_codesniffer": "^3.0"
   },
   "license": "MIT",
   "authors": [
-      {
-          "name": "ramazan",
-          "email": "yaru@bk.ru"
-      }
+    {
+      "name": "ramazan",
+      "email": "yaru@bk.ru"
+    }
   ],
   "scripts": {
-      "phpcs": "phpcs",
-      "phpunit": "phpunit"
+    "phpcs": "phpcs",
+    "phpunit": "phpunit"
   },
   "autoload": {
     "files": [
-      "src/common.php",
-      "src/diffFinder.php",
-      "src/parser.php",
-      "src/output.php"
-    ]
+      "src/common/common.php",
+      "src/diff/diffFinder.php",
+      "src/parser/parser.php",
+      "src/output/output.php"
+    ],
+    "psr-4": {
+      "DiffFinder\\Tests\\": "tests"
+    }
   }
 }

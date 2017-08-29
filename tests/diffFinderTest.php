@@ -1,5 +1,5 @@
 <?php
-namespace Diff\Tests;
+namespace DiffFinder\Tests;
 
 use \PHPUnit\Framework\TestCase;
 
