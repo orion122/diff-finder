@@ -1,6 +1,6 @@
 <?php
 
-namespace DiffFinder;
+namespace DiffFinder\output;
 
 function outputJSON($AST)
 {

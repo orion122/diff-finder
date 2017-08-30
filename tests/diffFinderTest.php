@@ -12,7 +12,7 @@ class DiffFinderTest extends TestCase
 
         $diffResult = file_get_contents('tests/fixtures/diff-result');
 
-        $this->assertEquals("$diffResult", \DiffFinder\diff\findDiff($array1, $array2, 'pretty'));
+        $this->assertEquals("$diffResult", \DiffFinder\diffFinder\findDiff($array1, $array2, 'pretty'));
     }
 
     public function testFindDiffNestedPretty()
@@ -51,7 +51,7 @@ class DiffFinderTest extends TestCase
 
         $diffResultNested = file_get_contents('tests/fixtures/diff-result-nested');
 
-        $this->assertEquals("$diffResultNested", \DiffFinder\diff\findDiff($array1, $array2, 'pretty'));
+        $this->assertEquals("$diffResultNested", \DiffFinder\diffFinder\findDiff($array1, $array2, 'pretty'));
     }
 
 
@@ -97,6 +97,6 @@ Property 'group1.baz' was changed. From 'bas' to 'bars'
 Property 'group2' was removed
 Property 'group3' was added with value: 'complex value'\n";
 
-        $this->assertEquals("$diffResult", \DiffFinder\diff\findDiff($array1, $array2, 'plain'));
+        $this->assertEquals("$diffResult", \DiffFinder\diffFinder\findDiff($array1, $array2, 'plain'));
     }
 }
