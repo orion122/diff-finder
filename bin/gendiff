@@ -26,5 +26,5 @@ if ($args['<firstFile>']) {
     $firstFile = $args['<firstFile>'];
     $secondFile = $args['<secondFile>'];
 
-    \DiffFinder\common\startGenDiff($firstFile, $secondFile, $args['--format']);
+    \DiffFinder\genDiff($firstFile, $secondFile, $args['--format']);
 }

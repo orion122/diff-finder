@@ -25,10 +25,10 @@
   },
   "autoload": {
     "files": [
-      "src/common/common.php",
-      "src/diff/diffFinder.php",
-      "src/parser/parser.php",
-      "src/output/output.php"
+      "src/common.php",
+      "src/diffFinder.php",
+      "src/parser.php",
+      "src/output.php"
     ],
     "psr-4": {
       "DiffFinder\\Tests\\": "tests"

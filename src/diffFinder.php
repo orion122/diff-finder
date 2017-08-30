@@ -1,6 +1,6 @@
 <?php
 
-namespace DiffFinder\diff;
+namespace DiffFinder;
 
 use function \Funct\Collection\union;
 
@@ -9,12 +9,12 @@ function findDiff($array1, $array2, $format)
     $resultArray = buildAST($array1, $array2);
 
     if ($format === 'plain') {
-        return \DiffFinder\output\outputPlain($resultArray);
+        return \DiffFinder\outputPlain($resultArray);
     } elseif ($format === 'json') {
-        return \DiffFinder\output\outputJSON($resultArray);
+        return \DiffFinder\outputJSON($resultArray);
     }
 
-    return "{\n".\DiffFinder\output\outputPretty($resultArray)."}";
+    return "{\n".\DiffFinder\outputPretty($resultArray)."}";
 }
 
 
