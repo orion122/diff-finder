@@ -12,5 +12,5 @@ function genDiff($file1, $file2, $format)
 
     $result = \DiffFinder\diffFinder\findDiff($fileArray1, $fileArray2, $format);
 
-    echo $result;
+    return $result;
 }

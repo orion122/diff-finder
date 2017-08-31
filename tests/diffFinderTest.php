@@ -5,98 +5,34 @@ use \PHPUnit\Framework\TestCase;
 
 class DiffFinderTest extends TestCase
 {
-    public function testFindDiff()
+    public function testPretty()
     {
-        $array1 = ['host' => 'hexlet.io', 'timeout' => 50, 'proxy' => '123.234.53.22'];
-        $array2 = ['timeout' => 20, 'verbose' => true, 'host' => 'hexlet.io'];
+        $filePath1 = 'tests/fixtures/before.json';
+        $filePath2 = 'tests/fixtures/after.json';
 
-        $diffResult = file_get_contents('tests/fixtures/diff-result');
+        $diffResult = file_get_contents('tests/fixtures/diff-result-pretty');
 
-        $this->assertEquals("$diffResult", \DiffFinder\diffFinder\findDiff($array1, $array2, 'pretty'));
+        $this->assertEquals("$diffResult", \DiffFinder\common\genDiff($filePath1, $filePath2, 'pretty'));
     }
 
-    public function testFindDiffNestedPretty()
+    public function testPrettyNested()
     {
-        $array1 = ["common" => [
-            "setting1" => "Value 1",
-            "setting2" => "200",
-            "setting3" => true,
-            "setting6" => [
-                "key" => "value"
-            ]
-        ],
-            "group1" => [
-                "baz" => "bas",
-                "foo" => "bar"
-            ],
-            "group2" => [
-                "abc" => "12345"
-            ]];
+        $filePath1 = 'tests/fixtures/before-nested.json';
+        $filePath2 = 'tests/fixtures/after-nested.json';
 
-        $array2 = ["common" => [
-            "setting1" => "Value 1",
-            "setting3" => true,
-            "setting4" => "blah blah",
-            "setting5" => [
-                "key5" => "value5"
-            ]
-        ],
-            "group1" => [
-                "foo" => "bar",
-                "baz" => "bars"
-            ],
-            "group3" => [
-                "fee" => "100500"
-            ]];
+        $diffResultNested = file_get_contents('tests/fixtures/diff-result-pretty-nested');
 
-        $diffResultNested = file_get_contents('tests/fixtures/diff-result-nested');
-
-        $this->assertEquals("$diffResultNested", \DiffFinder\diffFinder\findDiff($array1, $array2, 'pretty'));
+        $this->assertEquals("$diffResultNested", \DiffFinder\common\genDiff($filePath1, $filePath2, 'pretty'));
     }
 
 
-    public function testFindDiffNestedPlain()
+    public function testPlainNested()
     {
-        $array1 = ["common" => [
-            "setting1" => "Value 1",
-            "setting2" => "200",
-            "setting3" => true,
-            "setting6" => [
-                "key" => "value"
-            ]
-        ],
-            "group1" => [
-                "baz" => "bas",
-                "foo" => "bar"
-            ],
-            "group2" => [
-                "abc" => "12345"
-            ]];
+        $filePath1 = 'tests/fixtures/before-nested.json';
+        $filePath2 = 'tests/fixtures/after-nested.json';
 
-        $array2 = ["common" => [
-            "setting1" => "Value 1",
-            "setting3" => true,
-            "setting4" => "blah blah",
-            "setting5" => [
-                "key5" => "value5"
-            ]
-        ],
-            "group1" => [
-                "foo" => "bar",
-                "baz" => "bars"
-            ],
-            "group3" => [
-                "fee" => "100500"
-            ]];
+        $diffResult = file_get_contents('tests/fixtures/diff-result-plain-nested');
 
-        $diffResult = "Property 'common.setting2' was removed
-Property 'common.setting6' was removed
-Property 'common.setting4' was added with value: 'blah blah'
-Property 'common.setting5' was added with value: 'complex value'
-Property 'group1.baz' was changed. From 'bas' to 'bars'
-Property 'group2' was removed
-Property 'group3' was added with value: 'complex value'\n";
-
-        $this->assertEquals("$diffResult", \DiffFinder\diffFinder\findDiff($array1, $array2, 'plain'));
+        $this->assertEquals("$diffResult", \DiffFinder\common\genDiff($filePath1, $filePath2, 'plain'));
     }
 }
