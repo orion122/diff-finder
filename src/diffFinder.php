@@ -9,12 +9,12 @@ function findDiff($array1, $array2, $format)
     $resultArray = buildAST($array1, $array2);
 
     if ($format === 'plain') {
-        return \DiffFinder\output\outputPlain($resultArray);
+        return \DiffFinder\output\plain\output($resultArray);
     } elseif ($format === 'json') {
-        return \DiffFinder\output\outputJSON($resultArray);
+        return \DiffFinder\output\json\output($resultArray);
     }
 
-    return "{\n".\DiffFinder\output\outputPretty($resultArray)."}";
+    return "{\n".\DiffFinder\output\pretty\output($resultArray)."}";
 }
 
 

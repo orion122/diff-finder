@@ -28,7 +28,10 @@
       "src/common.php",
       "src/diffFinder.php",
       "src/parser.php",
-      "src/output.php"
+      "src/output/pretty.php",
+      "src/output/plain.php",
+      "src/output/json.php",
+      "src/output/utilities.php"
     ],
     "psr-4": {
       "DiffFinder\\Tests\\": "tests"
