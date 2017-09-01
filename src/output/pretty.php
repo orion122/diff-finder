@@ -27,7 +27,7 @@ function genOutput($AST, $depth = 0)
         }
     }, $AST);
 
-    return implode('', array_filter(flattenAll($result)));
+    return implode('', flattenAll($result));
 }
 
 
