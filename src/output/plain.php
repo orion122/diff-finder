@@ -4,18 +4,6 @@ namespace DiffFinder\output\plain;
 
 use function \Funct\Collection\flattenAll;
 
-function buildLine($changeType, $property, $value1 = '', $value2 = '')
-{
-    if ($changeType === 'removed') {
-        return "Property '$property' was $changeType";
-    } elseif ($changeType === 'added') {
-        return "Property '$property' was $changeType with value: '$value1'";
-    } elseif ($changeType === 'changed') {
-        return "Property '$property' was $changeType. From '$value1' to '$value2'";
-    }
-}
-
-
 function genOutput($AST, $parents = '')
 {
     $result = array_map(function ($array) use ($parents) {
@@ -37,4 +25,16 @@ function genOutput($AST, $parents = '')
     }, $AST);
 
     return implode(PHP_EOL, array_filter(flattenAll($result)));
+}
+
+
+function buildLine($changeType, $property, $value1 = '', $value2 = '')
+{
+    if ($changeType === 'removed') {
+        return "Property '$property' was $changeType";
+    } elseif ($changeType === 'added') {
+        return "Property '$property' was $changeType with value: '$value1'";
+    } elseif ($changeType === 'changed') {
+        return "Property '$property' was $changeType. From '$value1' to '$value2'";
+    }
 }

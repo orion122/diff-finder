@@ -2,32 +2,32 @@
 
 namespace DiffFinder\output\pretty;
 
+use function \Funct\Collection\flattenAll;
 use function DiffFinder\output\utilities\boolToText;
 use function DiffFinder\output\utilities\unpackArray;
 
 function genOutput($AST, $depth = 0)
 {
-    $result = array_reduce($AST, function ($acc, $array) use ($depth) {
+    $result = array_map(function ($array) use ($depth) {
         if ($array['type'] === 'nested') {
             $value = genOutput($array['children'], $depth + 1);
-            $acc .= buildLine(true, " ", $array['key'], $value, $depth);
+            return buildLine(true, " ", $array['key'], $value, $depth);
         } else {
             if ($array['type'] === 'unchanged') {
-                $acc .= buildLine(false, " ", $array['key'], $array['from'], $depth);
+                return buildLine(false, " ", $array['key'], $array['from'], $depth);
             } elseif ($array['type'] === 'changed') {
-                $acc .= buildLine(false, "-", $array['key'], $array['from'], $depth);
-                $acc .= buildLine(false, "+", $array['key'], $array['to'], $depth);
+                $value1 = buildLine(false, "-", $array['key'], $array['from'], $depth);
+                $value2 = buildLine(false, "+", $array['key'], $array['to'], $depth);
+                return [$value1, $value2];
             } elseif ($array['type'] === 'removed') {
-                $acc .= buildLine(false, "-", $array['key'], $array['from'], $depth);
+                return buildLine(false, "-", $array['key'], $array['from'], $depth);
             } elseif ($array['type'] === 'added') {
-                $acc .= buildLine(false, "+", $array['key'], $array['from'], $depth);
+                return buildLine(false, "+", $array['key'], $array['from'], $depth);
             }
         }
+    }, $AST);
 
-        return $acc;
-    }, '');
-
-    return $result;
+    return implode('', array_filter(flattenAll($result)));
 }
 
 
