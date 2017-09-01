@@ -26,8 +26,9 @@
   "autoload": {
     "files": [
       "src/common.php",
-      "src/diffFinder.php",
+      "src/buildAST.php",
       "src/parser.php",
+      "src/output/output.php",
       "src/output/pretty.php",
       "src/output/plain.php",
       "src/output/json.php",

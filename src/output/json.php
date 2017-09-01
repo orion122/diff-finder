@@ -2,7 +2,7 @@
 
 namespace DiffFinder\output\json;
 
-function output($AST)
+function genOutput($AST)
 {
     return json_encode($AST);
 }

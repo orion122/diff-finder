@@ -10,7 +10,7 @@ function genDiff($file1, $file2, $format)
     $fileArray1 = \DiffFinder\parser\dataToArray($file1Extension, file_get_contents($file1));
     $fileArray2 = \DiffFinder\parser\dataToArray($file2Extension, file_get_contents($file2));
 
-    $result = \DiffFinder\diffFinder\findDiff($fileArray1, $fileArray2, $format);
+    $AST = \DiffFinder\buildAST\buildAST($fileArray1, $fileArray2);
 
-    return $result;
+    return \DiffFinder\output\output($AST, $format);
 }

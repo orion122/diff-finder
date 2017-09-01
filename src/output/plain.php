@@ -2,11 +2,11 @@
 
 namespace DiffFinder\output\plain;
 
-function output($AST, $parents = '')
+function genOutput($AST, $parents = '')
 {
     $result = array_reduce($AST, function ($acc, $array) use ($parents) {
         if ($array['type'] === 'nested') {
-            $acc .= output($array['children'], "$parents{$array['key']}.");
+            $acc .= genOutput($array['children'], "$parents{$array['key']}.");
         } else {
             if ($array['type'] === 'changed') {
                 $acc .= buildLine('changed', $parents . $array['key'], $array['from'], $array['to']);

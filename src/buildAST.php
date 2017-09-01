@@ -1,22 +1,8 @@
 <?php
 
-namespace DiffFinder\diffFinder;
+namespace DiffFinder\buildAST;
 
 use function \Funct\Collection\union;
-
-function findDiff($array1, $array2, $format)
-{
-    $resultArray = buildAST($array1, $array2);
-
-    if ($format === 'plain') {
-        return \DiffFinder\output\plain\output($resultArray);
-    } elseif ($format === 'json') {
-        return \DiffFinder\output\json\output($resultArray);
-    }
-
-    return "{\n".\DiffFinder\output\pretty\output($resultArray)."}";
-}
-
 
 function buildAST($array1, $array2)
 {

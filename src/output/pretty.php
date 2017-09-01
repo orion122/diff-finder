@@ -5,11 +5,11 @@ namespace DiffFinder\output\pretty;
 use function DiffFinder\output\utilities\boolToText;
 use function DiffFinder\output\utilities\unpackArray;
 
-function output($AST, $depth = 0)
+function genOutput($AST, $depth = 0)
 {
     $result = array_reduce($AST, function ($acc, $array) use ($depth) {
         if ($array['type'] === 'nested') {
-            $value = output($array['children'], $depth + 1);
+            $value = genOutput($array['children'], $depth + 1);
             $acc .= buildLine(true, " ", $array['key'], $value, $depth);
         } else {
             if ($array['type'] === 'unchanged') {
