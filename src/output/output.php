@@ -10,5 +10,5 @@ function output($AST, $format)
         return \DiffFinder\output\json\genOutput($AST);
     }
 
-    return "{\n".\DiffFinder\output\pretty\genOutput($AST)."}";
+    return "{\n".\DiffFinder\output\pretty\genOutput($AST)."}\n";
 }
