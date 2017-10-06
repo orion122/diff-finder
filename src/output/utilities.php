@@ -14,11 +14,11 @@ function boolToText($value)
 }
 
 
-function unpackArray($array)
+function unpackArray($array, $spaces)
 {
-    return array_reduce(array_keys($array), function ($acc, $key) use ($array) {
+    return array_reduce(array_keys($array), function ($acc, $key) use ($array, $spaces) {
         $value = boolToText($array[$key]);
-        $acc .= "\"$key\": $value";
+        $acc .= "$spaces\"$key\": $value";
         return $acc;
     }, '');
 }

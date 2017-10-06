@@ -43,8 +43,8 @@ function buildLine($isNested, $mark, $key, $value, $depth)
         if (!is_array($value)) {
             $half2 = boolToText($value);
         } else {
-            $values = unpackArray($value);
-            $half2 = "{\n$spaces      $values  $spaces}\n";
+            $values = unpackArray($value, "$spaces      ");
+            $half2 = "{\n$values  $spaces}\n";
         }
     }
     return $half1 . $half2;
