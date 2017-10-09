@@ -25,7 +25,7 @@ Options:
   -h --help                     Show this screen
   --format <fmt>                Report format [default: pretty]
 ```
-####Pretty output:
+Pretty output:
 ```
 $ ~/vendor/bin/gendiff first.json second.json
    {
@@ -54,7 +54,7 @@ $ ~/vendor/bin/gendiff first.json second.json
        }
    }
 ```
-####Plain output:
+Plain output:
 ```
 $ ~/vendor/bin/gendiff --format plain first.json second.json
 Property 'common.setting2' was removed
@@ -65,7 +65,7 @@ Property 'group1.baz' was changed. From 'bas' to 'bars'
 Property 'group2' was removed
 Property 'group3' was added with value: 'complex value'
 ```
-####JSON output:
+JSON output:
 ```
 $ ~/vendor/bin/gendiff --format json first.json second.json
 [{"key":"common","type":"nested","children":[{"key":"setting1","type":"unchanged","from":"Value 1","to":null},{"key":"setting2","type":"removed","from":"200","to":null},{"key":"setting3","type":"unchanged","from":true,"to":null},{"key":"setting6","type":"removed","from":{"key":"value"},"to":null},{"key":"setting4","type":"added","from":"blah blah","to":null},{"key":"setting5","type":"added","from":{"key5":"value5"},"to":null}]},{"key":"group1","type":"nested","children":[{"key":"baz","type":"changed","from":"bas","to":"bars"},{"key":"foo","type":"unchanged","from":"bar","to":null}]},{"key":"group2","type":"removed","from":{"abc":"12345"},"to":null},{"key":"group3","type":"added","from":{"fee":"100500"},"to":null}]
