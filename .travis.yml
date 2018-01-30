@@ -6,4 +6,13 @@ install:
   - composer self-update
   - make install
 
+addons:
+  code_climate:
+    repo_token:
+      secure: "ifvqoumpq4NKp8DrxKJzSiVX2HbVs36rR38t97S+0rqw4LAgUqZy2F10BYrBXGQPxbwO/sTqVvhj/n+j0Z0yJHdXWmnn7dJDXduYnsMRBLHlTWGXJ1wq4wpNIBe6ynN0uX9D8qlOgWiYmcWxOWzn8K6Wss7tDXxieSaZ1ZAVr+2ueR3ri6vK50bkb/aen94Qa1GAdJ7bJScp9LIu704JHaJo2kO/9yKDdBN0X9vQRJ2egZ8In7HoGCHtXcqCHOK3V+ZaN+rT6dATGApnY6kLImS5nKsQ7Jn0bFFqx9Ap71eePymb8wSatWB+I8GrRJPIqLDIBSJPK0ol/e747LLCkoamYTza3dUqlpKEnNSxedvAEz0GKAXSAGfG/oih7DhhHehc1oGyjMfW5EJw29NiArLyJMbUzdBIZ1CwgChEUd7S/wCE8zfr2OKjAlZchNLNHuSpCpg2bIK1y+F5LhJqQL6OKi2wvv0DlpNSh5mqqF/XU9z0+LTDgOEEaoiWDKLm2ZFnAbB4vsTrk3mtBA1kBgGcNyk117bTXvzDsx9k7CdSY7Jw2uKDDlZDfXkQBC+gLFE7kj1nDSBjOqcJgwhYapsTlfghMM4lWA4zcY1IId3K0ZQVeZAzq7LQbV5Fl3JBfucZ/JNr6C1VmgBNII7HIVWD8GGCx2xUtz5Oc9iuDYU="
+
+
 script: make lint test
+
+after_script:
+  - vendor/bin/test-reporter
