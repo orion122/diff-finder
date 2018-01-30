@@ -1,8 +1,8 @@
 # Diff Finder
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/3b7d5bea3135e3996607/maintainability)](https://codeclimate.com/github/orion122/diff-finder/maintainability)
-[![Issue Count](https://codeclimate.com/github/orion122/diff-finder/badges/issue_count.svg)](https://codeclimate.com/github/orion122/diff-finder)
 [![Build Status](https://travis-ci.org/orion122/diff-finder.svg?branch=master)](https://travis-ci.org/orion122/diff-finder)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3b7d5bea3135e3996607/maintainability)](https://codeclimate.com/github/orion122/diff-finder/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3b7d5bea3135e3996607/test_coverage)](https://codeclimate.com/github/orion122/diff-finder/test_coverage)
 
 ## Description
 Utility for finding differences in configuration files.
